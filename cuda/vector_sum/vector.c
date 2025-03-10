@@ -2,16 +2,18 @@
 
 Vector* read_vector(FILE* fp) {
   Vector* v = (Vector*)malloc(sizeof(Vector));
-  if (fscanf(fp, "%lf", &v->size) != 1){
+  if (fscanf(fp, "%d", &v->size) != 1){
    free(v);
   return NULL;
   }
   v->components = (double*)malloc(v->size * sizeof(double));
   for (int i = 0; i < v->size; i++){
+    // check that the each line is a valid component
+    // (only contains one double
     if (fscanf(fp, "%lf", &v->components[i]) != 1){
-    free(v->components);
-    free(v);
-    return NULL;
+      free(v->components);
+      free(v);
+      return NULL;
     }
   }
   return v;
