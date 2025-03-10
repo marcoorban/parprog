@@ -30,6 +30,7 @@ int main(int argc, char* argv[]) {
 
     Vector* v1 = read_vector(input_fp1);
     Vector* v2 = read_vector(input_fp2);
+    // Check if any of the vectors are null. If so, close all the files.
     if (v1 == NULL || v2 == NULL) {
         printf("Error reading vectors from file.\n");
         if (v1 != NULL) free_vector(v1);
@@ -38,4 +39,8 @@ int main(int argc, char* argv[]) {
         fclose(input_fp2);
         fclose(output_fp);
       }
+
+    // Add the vectors and write them to the result file.
+    Vector* result = add_vectors(v1, v2);
+    write_vector(output_fp, result);
 }

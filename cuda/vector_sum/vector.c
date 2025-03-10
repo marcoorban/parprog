@@ -19,6 +19,7 @@ Vector* read_vector(FILE* fp) {
 
 Vector* add_vectors(Vector* v1, Vector* v2) {
   if (v1->size != v2->size) {
+    printf("Vectors not the same size!");
     return NULL;
   }
   Vector* result = (Vector*)malloc(sizeof(Vector));
@@ -47,7 +48,7 @@ void free_vector(Vector* v) {
 }
 
 void write_vector(FILE* fp, Vector* v) {
-  fprintf(fp, "%d", v->size);
+  fprintf(fp, "%d\n", v->size);
   for (int i = 0; i < v->size; i++) {
     fprintf(fp, "%f\n", v->components[i]);
   }
