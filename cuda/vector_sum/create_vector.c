@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "vector.h"
 
+/* This files creates an n dimensional vector with random components.
+ * ARGS: output file: the name of the file where the vector will be stored.
+ * DIM: vector dimension.
+*/
+
 int main(int argc, char *argv[]){
 
   if (argc != 3) {

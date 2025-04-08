@@ -1,5 +1,7 @@
 #include "vector.h"
 
+
+/* Reads an n-dimensional vector from a file */
 Vector* read_vector(FILE* fp) {
   Vector* v = (Vector*)malloc(sizeof(Vector));
   if (fscanf(fp, "%d", &v->size) != 1){
@@ -19,6 +21,8 @@ Vector* read_vector(FILE* fp) {
   return v;
 }
 
+/* Adds two n dimensional vectors. The vectors should already be in memory. Therefore, the vectors
+ * should be created, or be read using the read_vector function */
 Vector* add_vectors(Vector* v1, Vector* v2) {
   if (v1->size != v2->size) {
     printf("Vectors not the same size!");
@@ -33,6 +37,8 @@ Vector* add_vectors(Vector* v1, Vector* v2) {
   return result;
 }
 
+/* Creates a random n-dimensional vector. The vector is stored in memory but it not necessarily saved permanently.
+ * To save the vector for posterity, use the write_vector method */
 Vector* create_random_vector(int n){
   srand(time(NULL)); 
   Vector* v = (Vector*)malloc(sizeof(Vector));
@@ -44,11 +50,13 @@ Vector* create_random_vector(int n){
   return v;
 }
 
+/* Frees vector from memory */
 void free_vector(Vector* v) {
   free(v->components);
   free(v);
 }
 
+/* Writes a vector to a file for later use. */
 void write_vector(FILE* fp, Vector* v) {
   fprintf(fp, "%d\n", v->size);
   for (int i = 0; i < v->size; i++) {

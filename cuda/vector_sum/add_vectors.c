@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "vector.h"
 
+/* Reads two vectors (already saved in files), adds them, and stores the result in another file 
+ * ARGS: v1file: the file where the first vector is stored.
+ * v2file: the file where the second vector is stored.
+ * output: the name of the file where the result will be saved.
+ */
+
 int main(int argc, char* argv[]) {
     if (argc != 4) {
         printf("Usage: %s <v1file> <v2file> <output_file>\n", argv[0]);
